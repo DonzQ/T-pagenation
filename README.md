@@ -2,7 +2,7 @@
 基于jQuery的翻页插件
 
 ####调用方式:
-```
+```javascript
 <div id="article">
     我是内容!!
 </div>
