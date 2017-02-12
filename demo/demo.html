@@ -14,7 +14,7 @@
 </head>
 <body>
     <div id="article">
-        我是文章!!!
+        我是内容!!
     </div>
     <div id="pagenation"></div>
 </body>
@@ -26,7 +26,7 @@
         current_page: 1, // 当前页
         view_pages: 5, // 需要显示的分页数
         onClick: function (current) {
-            $('#article').html('我是第'+ current +'页的文章!!!')
+            $('#article').html('我是第'+ current +'页的内容!!!')
         }
     };
     $('#pagenation').tpage(defaults);
