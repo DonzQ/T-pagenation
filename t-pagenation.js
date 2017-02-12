@@ -6,9 +6,9 @@
         tpage: function (options) {
             var self = this;
             var defaults = {
-                total_pages: 10, // 总页数，默认为1
+                total_pages: 5, // 总页数，默认为5
                 current_page: 1, // 当前页，默认为1
-                view_pages: 5, // 需要显示的页数，默认显示为5页
+                view_pages: 5, // 需要显示的分页数，默认显示为5页
                 onClick: function (current) {} // 点击事件绑定
             };
             var opts = $.extend({}, defaults, options);
@@ -21,17 +21,19 @@
                 if (opts.current_page >= 2) {
                     self.append('<a data-page="'+ (opts.current_page-1) +'">上一页</a>');
                 }
-                
+
                 // 中间页
                 var start = opts.current_page - Math.floor(opts.view_pages/2), end = 0;
 
+                // 起始页
                 if (opts.total_pages >= opts.view_pages) {
-                    if ((start <= 0)) start = 1;
+                    if (start <= 0) {start = 1};
                     if (start >= (opts.total_pages - opts.view_pages)) {
                         start = opts.total_pages - opts.view_pages + 1
                     }
-                } else start = 1 ;
+                } else {start = 1};
 
+                // 结束页
                 opts.total_pages >= opts.view_pages ? end = opts.view_pages : end = opts.total_pages;
 
                 for (var i = 1; i <= end;i ++) {

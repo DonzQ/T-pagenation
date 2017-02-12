@@ -1,2 +1,2 @@
 # T-pagenation
-简易翻页插件
+基于jQuery的翻页插件
