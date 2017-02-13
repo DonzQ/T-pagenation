@@ -25,18 +25,22 @@
                 // 中间页
                 var start = opts.current_page - Math.floor(opts.view_pages/2), end = 0;
 
-                // 起始页
                 if (opts.total_pages >= opts.view_pages) {
+                    // 起始页
                     if (start <= 0) {start = 1};
                     if (start >= (opts.total_pages - opts.view_pages)) {
                         start = opts.total_pages - opts.view_pages + 1
                     }
-                } else {start = 1};
-
-                // 结束页
-                opts.total_pages >= opts.view_pages ? end = opts.view_pages : end = opts.total_pages;
-
-                for (var i = 1; i <= end;i ++) {
+                    // 结束页
+                    end = opts.view_pages
+                } else {
+                    // 起始页
+                    start = 1
+                    // 结束页
+                    end = opts.total_pages
+                };
+                //循环渲染中间分页
+                for (var i=1; i<=end; i++) {
                     if (opts.current_page == start) {
                         self.append('<a data-page="'+ start +'" class="current">'+ start +'</a>');
                     } else {
@@ -55,9 +59,9 @@
             var bindEvent = function () {
                 self.on('click', 'a', function () {
                     initPage({
-                        'current_page': Number($(this).attr('data-page')),
-                        'total_pages': opts.total_pages,
-                        'view_pages': opts.view_pages
+                        current_page: Number($(this).attr('data-page')),
+                        total_pages: opts.total_pages,
+                        view_pages: opts.view_pages
                     });
                     opts.onClick($(this).attr('data-page'))
                 })
